@@ -20,4 +20,11 @@ Console.WriteLine(string.Join(" ", array));
 else
 {
     Console.WriteLine("Написано же 8!!!");
+    Console.WriteLine("Ну ладно, сделаю все сам!");
+    int[] array = new int[8];
+    Random rand = new Random();
+    for (n = 0; n < array.Length; n++)
+    array[n] = rand.Next(1, 100);
+    Console.WriteLine("Сделаный за тебя массив:");
+    Console.WriteLine(string.Join(" ", array));
 }
