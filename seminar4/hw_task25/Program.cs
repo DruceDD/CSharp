@@ -11,10 +11,16 @@ int s = Convert.ToInt32(Console.ReadLine());
 
 int res = 1;
 int i = 0;
-
-while (i < s)
+if (s > 0)
 {
+    while (i < s)
+    {
     res = res * n;
-    i++;       
+    i++;
+    }   
+Console.WriteLine(res);    
 }
-Console.WriteLine(res);
+else
+{
+  Console.WriteLine("Степень должна быть натуральным числом!");
+}
