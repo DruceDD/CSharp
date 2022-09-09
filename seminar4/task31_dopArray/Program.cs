@@ -4,19 +4,15 @@ Console.WriteLine("Введите длину массива:");
 int l = Convert.ToInt32(Console.ReadLine());
 int n = 0;
 
+Console.WriteLine("Введите поочередно элементы массива:");
 int[] array = new int[l];
 for (n = 0; n < l; n++)
 {
-    Console.WriteLine("Введите элементы массива:");
     array[n] = Convert.ToInt32(Console.ReadLine());
 }
 
 Console.WriteLine("Введенный массив:");
-for(n = 0; n < l; n++)
-{
-Console.Write(array[n]);
-}
-Console.WriteLine("");
+Console.WriteLine(string.Join(" ", array));
 Console.WriteLine("Отсортированный массив:");
 
 int i = 0;
@@ -43,8 +39,4 @@ j++;
 a = a - 1;
 i = 0;
 }
-
-for(n = 0; n < l; n++)
-{
-Console.Write(array[n]);
-}
+Console.WriteLine(string.Join(" ", array));
