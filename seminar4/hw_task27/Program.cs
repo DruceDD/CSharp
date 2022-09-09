@@ -8,11 +8,9 @@
 Console.WriteLine("Введите число:");
 int n = Convert.ToInt32(Console.ReadLine());
 int res = 0;
-int d = 0;
 while (n > 0)
 {
-    d = n % 10;
-    res = res + d;
+    res = res + n % 10;
     n = n / 10;
 }
 Console.WriteLine(res);
