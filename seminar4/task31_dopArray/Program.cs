@@ -12,7 +12,7 @@ for (n = 0; n < l; n++)
 }
 
 Console.WriteLine("Введенный массив:");
-Console.WriteLine(string.Join(" ", array));
+Console.WriteLine(string.Join(", ", array));
 Console.WriteLine("Отсортированный массив:");
 
 int i = 0;
