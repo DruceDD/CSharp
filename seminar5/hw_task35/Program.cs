@@ -22,7 +22,7 @@ int NumbersInArray(int[] arr)
     int count = 0;
     for (int i = 0; i < arr.Length; i++)
     {
-        if (arr[i] >= 10 && arr[i] <= 100)
+        if (arr[i] >= 10 && arr[i] < 100)
         {
             count++;
         }
