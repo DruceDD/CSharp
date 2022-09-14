@@ -15,6 +15,16 @@ int[] GetArray(int size, int left, int right)
     return arr;
 }
 
+int SumOfOddEl (int[] array)
+{
+int sum = 0;
+for (int i = 1; i < array.Length; i += 2)
+{
+    sum += array[i];
+}
+return sum;
+}
+
 Console.Write("Введите длину массива: ");
 int size = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите левую границу массива: ");
@@ -25,9 +35,6 @@ int right = Convert.ToInt32(Console.ReadLine());
 int[] array = GetArray(size, left, right);
 Console.WriteLine("Сформированный массив: " + string.Join(", ", array));
 
-int sum = 0;
-for (int i = 1; i < array.Length; i += 2)
-{
-    sum += array[i];
-}
+int sum = SumOfOddEl(array);
 Console.WriteLine($"Сумма элементов массива на нечётных позициях = {sum}");
+
