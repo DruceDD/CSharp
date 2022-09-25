@@ -172,9 +172,9 @@ double[] avgSumColumnMatrix(double[,] matrix)
 }
 
 /* Флаг остановки по слову.
-Console.WriteLine("Вводите числа, пока не надоест (стоп-слово 'stop')");
+Console.WriteLine("Вводите числа, пока не надоест (стоп-слово 'stop')"); */
 int i = 0;
-bool flag = true; */       
+bool flag = true;        
 while (flag == true)
 {
     string n = Console.ReadLine();
