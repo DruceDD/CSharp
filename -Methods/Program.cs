@@ -33,7 +33,9 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-// Сортировка матрицы по линия.
+
+
+// Сортировка матрицы по строкам.
 void SortByLineMatrix(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
@@ -56,7 +58,7 @@ void SortByLineMatrix(int[,] matrix)
 }
 
 /* Рандом без повторений.
-void GetMatrix(int[] array, int[,] cubeMatrix)
+void GetMatrix(int[] array, int[,] matrix)
 matrix[i, j] = array[count++]; */
 int[] NewRandom(int[] randNew)
 {
