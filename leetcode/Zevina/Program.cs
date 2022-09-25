@@ -1,75 +1,90 @@
-﻿/* Перевести число, введенное в консоли, из римских цифр в арабские.
-Symbol       Value
-I             1
-V             5
-X             10
-L             50
-C             100
-D             500
-M             1000
-I can be placed before V (5) and X (10) to make 4 and 9. 
-X can be placed before L (50) and C (100) to make 40 and 90. 
-C can be placed before D (500) and M (1000) to make 400 and 900.
-Example 1:
-Input: s = "III"
-Output: 3
-Explanation: III = 3.
-Example 2:
-Input: s = "LVIII"
-Output: 58
-Explanation: L = 50, V= 5, III = 3.
-Example 3:
-Input: s = "MCMXCIV"
-Output: 1994
-Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
-*/
-
-bool NumberExist(string[] letters, string inputNumber)
+﻿int n = 0;
+while (n == 0)
 {
-  bool flag = true;
-  for (int j = 0; j < letters.Length; j++)
-  {
-    if (inputNumber.Contains(letters[j]) == true)
+    try
     {
-      flag = false;
-      break;
+        Console.Write("Введите размер квадрата: ");
+        n = Convert.ToInt32(Console.ReadLine());
     }
-    else flag = true;
-  }
-  return flag;
+    catch (FormatException e)
+    {
+        Console.WriteLine("Размер - целое число, больше 0");
+        Console.WriteLine("Попробуйте еще раз");
+    }
+}
+var matrix = new int[n, n];
+var rand = new Random();
+for (int i = 0; i < n; i++)
+{
+    for (int j = 0; j < n; j++)
+    {
+        matrix[i, j] = rand.Next(100);
+    }
+}
+Console.WriteLine("Исходная матрица: ");
+MatrixOutput(matrix);
+// создаем массив
+int[] arr = GetArray(matrix);
+Console.WriteLine("Исходный массив:");
+ArrayOutput(arr);
+
+// сортируем массив
+Array.Sort(arr);
+Console.WriteLine("После сортировки:");
+ArrayOutput(arr);
+
+// преобразуем матрицу
+matrix = SpiralConvertion(arr);
+
+Console.WriteLine("Результат: ");
+MatrixOutput(matrix);
+
+
+void MatrixOutput(int[,] mx)
+{
+    int n = mx.GetLength(0);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            Console.Write("{0,4}", mx[i, j]);
+        }
+        Console.WriteLine();
+    }
 }
 
-Dictionary<char, int> romanDigits = new Dictionary<char, int>
+void ArrayOutput(int[] arr)
 {
-    { 'I', 1 },
-    { 'V', 5 },
-    { 'X', 10 },
-    { 'L', 50 },
-    { 'C', 100 },
-    { 'D', 500 },
-    { 'M', 1000 },
-};
-
-string[] exceptions = { "IL", "IC", "ID", "IM", "VX", "VL", "VC", "VD", "VM", "XD", "XM", "LC", "LD", "LM" };
-
-Console.WriteLine("Введите римское число: ");
-string input = Console.ReadLine();
-string upper = input.ToUpper();
-char[] roman = upper.ToCharArray();
-
-int result = 0;
-
-if (NumberExist(exceptions, upper) == true)
-{
-  for (int i = 0; i < roman.Length - 1; i++)
-  {
-    if (romanDigits[roman[i]] < romanDigits[roman[i + 1]]) result -= romanDigits[roman[i]];
-    else if (romanDigits[roman[i]] >= romanDigits[roman[i + 1]]) result += romanDigits[roman[i]];
-  }
-  result += romanDigits[roman[^1]];
-  Console.WriteLine($"Введенное число равно {result}");
+    Console.WriteLine(String.Join(", ", arr));
+    Console.WriteLine();
 }
-else
+
+int[] GetArray(int[,] mx)
 {
-  Console.WriteLine("Число введено неверно!");
+    return mx.Cast<int>().ToArray();
+}
+
+int[,] SpiralConvertion(int[] arr)
+{
+    var n = (int)Math.Sqrt(arr.Length);
+    var matrix = new int[n, n];
+
+    int m = n / 2 + n % 2,
+        len = n,
+        count = 0;
+
+    for (int i = 0; i < m; i++)
+    {
+        // Верх
+        for (int j = 0; j < len; j++) matrix[i, i + j] = arr[count++];
+        // Право
+        for (int j = 1; j < len; j++) matrix[i + j, n - i - 1] = arr[count++];
+        len -= 2;
+        // Низ
+        for (int j = len; j >= 0; j--) matrix[n - i - 1, i + j] = arr[count++];
+        // Лево
+        for (int j = len; j >= 1; j--) matrix[i + j, i] = arr[count++];
+    }
+
+    return matrix;
 }
