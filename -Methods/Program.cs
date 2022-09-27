@@ -1,4 +1,4 @@
-﻿// Ввод числа из консоли.
+﻿//FIXME  Ввод числа из консоли.
 int ReadNumber(string message)
 {
     Console.WriteLine(message);
